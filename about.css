@@ -1,0 +1,401 @@
+/* General Styles */
+body {
+    font-family: 'Garamond', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    text-align: center;
+}
+
+/* Hero Section */
+.hero {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url('hero-background.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 40px;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    animation: fadeIn 1.5s ease-in-out;
+    max-width: 700px;
+    margin-top: 85px;
+}
+
+.hero h1 {
+    font-size: 2.5rem; /* Slightly smaller */
+    max-width: 700px;
+}
+
+.hero p {
+    font-size: 1.2rem; /* Reduce slightly */
+    max-width: 600px;
+    margin: 8px auto; /* Reduce spacing */
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+/* Navigation */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    padding: 15px 40px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures logo is on the left, nav items are on the right */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Remove margin-left: auto and center align */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Increase spacing for better alignment */
+    padding: 0;
+    margin: 0 40px 0 auto; /* Pushes the nav to the right */
+    transform: translateX(-48px); /* Shift items 48px to the left */
+}
+
+.navbar ul li {
+    display: inline-block;
+    white-space: nowrap; /* Prevents line breaks */
+}
+
+.navbar ul li a:hover {
+    color: black; /* Change the color to blue upon hover */
+    transform: translateY(-3px);
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #4E6271;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/* Style for the dropdown container */
+.navbar .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style for the dropdown button (Services) */
+.navbar .dropbtn {
+    font-size: 16px;
+    background-color: transparent;
+    color: #4E6271; /* Adjust this based on your site's color scheme */
+    padding: 14px 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown content (hidden by default) */
+.navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #A3C8E6; /* Adjust this for your theme */
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 10px; /* Adjust radius for more or less roundness */
+}
+
+.navbar .dropdown-content a {
+  color: whitesmoke;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect */
+.navbar .dropdown-content a:hover {
+  background: linear-gradient(90deg, #A3C8E6, #D1ECF9);
+  color: black; /* Darker text for contrast */
+  transform: translateY(-3px);
+  border-radius: 10px; /* Adjust radius for more or less roundness */
+}
+
+/* Show the dropdown content when hovering */
+.navbar .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Responsive Fix for Small Screens */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px 20px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+}
+
+.navbar-logo img {
+    height: 50px; /* Adjust as needed */
+    width: auto;
+    margin-right: 20px; /* Space between logo and navigation links */
+    border-radius: 15px;
+}
+
+
+/* Footer */
+footer {
+    background: white;
+    color: #4E6271;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mission Section */
+.mission {
+    padding: 50px 20px;
+    background: #eef5ff;
+    text-align: center;
+}
+
+.mission h2 {
+    font-size: 2rem;
+    color: #4E6271;
+    margin-bottom: 20px;
+}
+
+.mission p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #4E6271;
+}
+
+.mission-container, .value-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.mission-box, .value-box {
+    width: 30%;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mission-box i, .value-box i {
+    font-size: 40px;
+    color: #007BFF;
+    margin-bottom: 15px;
+}
+
+.mission-box h3, .value-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.mission-box p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.mission-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Our Story Section */
+.our-story {
+    padding: 50px 20px;
+    background: white;
+    text-align: center;
+}
+
+.our-story h2 {
+    font-size: 2rem;
+    color: #4E6271;
+    margin-bottom: 20px;
+}
+
+/* Our Story Font */
+.our-story p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #4E6271;
+}
+
+.our-story-container, .value-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.our-story-box, .value-box {
+    width: 30%;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.our-story-box:hover {
+    transform: translateY(-5px);
+}
+
+
+/* Meet the Team Section */
+.team {
+    padding: 50px 20px;
+    background: #eef5ff;
+    text-align: center;
+}
+
+.team h2 {
+    font-size: 2rem;
+    color: #4E6271;
+    margin-bottom: 20px;
+}
+
+.team-container {
+    display: flex; 
+    justify-content: center; /* Centers team members */
+    gap: 40px; /* Adds space between members */
+    flex-wrap: wrap; /* Makes it responsive on smaller screens */
+}
+
+.team-member {
+    text-align: center;
+    max-width: 250px; /* Adjusts the size of each team member */
+    color: #4E6271;
+}
+
+.team-member img {
+    width: 100%; 
+    max-width: 200px; /* Controls the image size */
+    height: 200px; /* Ensures a square shape */
+    object-fit: cover; /* Keeps the image well-cropped */
+    border-radius: 20px; /* Rounds the corners */
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+
+/* Why Insight Boxes */
+.why {
+    padding: 50px 20px;
+    text-align: center;
+    color: #4E6271;
+    font-size: 1.3rem;
+}
+
+.why-proposition {
+    padding: 50px 20px;
+    background: white;
+    text-align: center;
+}
+
+.why-proposition h2 {
+    font-size: 2rem;
+    color: #4E6271;
+    margin-bottom: 20px;
+}
+
+.why-proposition p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    color: #4E6271;
+}
+
+.why-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.why-box {
+    background: #eef5ff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.why-box i {
+    font-size: 40px;
+    color: #4E6271;
+    margin-bottom: 15px;
+}
+
+.why-box img {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+.why-box h3 {
+    color: #4E6271;
+    margin-bottom: 10px;
+}
+
+.why-box p {
+    font-size: 1rem;
+    color: #4E6271;
+}
