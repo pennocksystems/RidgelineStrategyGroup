@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Farro:wght@400;700&display=swap" rel="stylesheet">
+  <title>Pennock Systems Chatbot</title>
+</head>
+<body>
+  <!-- Chatbot Frame (Initially hidden) -->
+  <div id="chatbot-frame" style="display: none;">
+    <div class="chat-header">
+      <strong>Boise Spud Shuckers</strong>
+      <!-- Reset Button in Header -->
+      <button id="reset-chat" onclick="resetChat()" class="reset-btn">↻</button>
+    </div>
+    <div class="chat-body" id="chat-body">
+      <div id="chatbot-messages">
+        <!-- Messages will appear here -->
+      </div>
+    </div>
+    <div id="chatbot-buttons-container">
+      <div id="chatbot-buttons">
+        <button class="chatbot-btn" onclick="handleButtonClick('📊 Services')">📊 Services</button>
+        <button class="chatbot-btn" onclick="handleButtonClick('💬 Chat')">💬 Chat</button>
+        <button class="chatbot-btn" onclick="handleButtonClick('💡 Resources')">💡 Resources</button>
+        <button class="chatbot-btn" onclick="handleButtonClick('📱 Contact')">📱 Contact</button>
+      </div>
+    </div>
+  </div>
+
+<div class="chatbot-footer">
+  Powered by <span class="footer-brand">Pennock Systems</span>
+</div>
+
+  <!-- Toggle Button (Logo) -->
+  <div id="chatbot-toggle" onclick="toggleChatbot()">
+    <img src="images/ChatGPT Image May 2, 2025, 07_48_05 PM.png" alt="Chatbot Logo" class="chatbot-logo" />
+  </div>
+
+  <script src="chatbot.js"></script>
+  <script>
+    // Toggle the chatbot visibility
+    function toggleChatbot() {
+      var frame = document.getElementById('chatbot-frame');
+      
+      if (frame.classList.contains('show')) {
+        frame.classList.remove('show');
+        setTimeout(() => {
+          frame.style.display = "none"; // After fade-out, hide it
+        }, 500); // Delay to match the fade-out duration
+      } else {
+        frame.style.display = "flex"; // Make the chatbot visible
+        setTimeout(() => {
+          frame.classList.add('show'); // After visibility is set, fade it in
+        }, 10); // Small delay to trigger the fade-in
+      }
+    }
+
+    // Reset the chat by clearing messages
+    function resetChat() {
+      const chatMessages = document.getElementById('chatbot-messages');
+      chatMessages.innerHTML = ''; // Clear chat history
+
+      // Optionally, you can re-trigger the chatbot greeting or menu here
+      const greetingMessage = document.createElement('div');
+      greetingMessage.classList.add('bot-message');
+      greetingMessage.innerHTML = '<strong>You reset the chat!🔄</strong> How can I assist you?';
+      chatMessages.appendChild(greetingMessage);
+    }
+  </script>
+</body>
+</html>
