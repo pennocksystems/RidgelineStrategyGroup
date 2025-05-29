@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Ridgeline Strategy Group LLC</title>
+    <link rel="stylesheet" href="contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    
+<!-- Navigation -->
+<nav class="navbar">
+    <a href="index.html" class="navbar-logo">
+        <img src="images/R logo 2.png" alt="RSG International Logo">
+    </a>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+            <a href="services.html" class="dropbtn">Services</a>
+            <div class="dropdown-content">
+                <a href="insight-solutions.html">Campus Insight</a>
+                <a href="technology-consulting.html">Pennock Systems</a>
+                <a href="5-star-media.html">5-Star Media</a>
+            </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+    <!-- Hero Section with Background Video -->
+    <header class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="videos/857195-hd_1280_720_25fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <h1>Contact Us</h1>
+            <p>We're here to help. Get in touch with Ridgeline Strategy Group today!</p>
+        </div>
+    </header>
+
+    <!-- General Contact Information -->
+    <section class="contact">
+        <h2>General Contact Information</h2>
+        <div class="value-container">
+            <div class="value-box">
+                <i class="fas fa-phone"></i>
+                <h3>123-456-7890</h3>
+                <p>Phone</p>
+            </div>
+            <div class="value-box">
+                <i class="fas fa-envelope"></i>
+                <h3>info@ridgelinestrategygroup.com</h3>
+                <p>Email</p>
+            </div>
+            <div class="value-box">
+                <i class="fab fa-instagram"></i>
+                <h3>@ridgelinestrategy</h3>
+                <p>Instagram</p>
+            </div>
+        </div>
+    </section>
+
+<!-- Contact Form Section -->
+<section class="contact-form">
+    <h2>Contact Us Directly</h2>
+    <form action="submit_form.php" method="POST">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your Name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Your Email">
+        </div>
+
+        <div class="form-group">
+            <label for="service-inquiry">Service Inquiry</label>
+            <select id="service-inquiry" name="service-inquiry">
+                <option value="" disabled selected>Select a Service</option>
+                <option value="higher-education">Higher Education & Leadership</option>
+                <option value="technology-solutions">Technology Solutions & AI</option>
+                <option value="financial-consulting">Financial Consulting</option>
+                <option value="digital-media">Digital Media</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Your Message"></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Send Message</button>
+    </form>
+</section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Insight International LLC. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+
+
