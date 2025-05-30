@@ -1,3 +1,25 @@
+let ttsMuted = true;  // Start muted
+
+function toggleTTS() {
+  ttsMuted = !ttsMuted;
+  const btn = document.getElementById("tts-toggle"); // Make sure this matches your button's ID
+  if (ttsMuted) {
+    btn.textContent = "🔇"; // muted icon
+  } else {
+    btn.textContent = "🔊"; // unmuted icon
+  }
+}
+
+function speak(text) {
+  if (ttsMuted) return; // Don't speak if muted
+
+  if (!window.speechSynthesis) return;
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  window.speechSynthesis.speak(utterance);
+}
+
+
 function handleButtonClick(option) {
     console.log("Button clicked:", option);
     const messages = document.getElementById("chatbot-messages");
@@ -36,22 +58,25 @@ switch (option) {
         botResponse.classList.add("message", "bot-message");
         botResponse.innerHTML = "<strong>Awesome!</strong> 👏 You're now interacting with our live demo chatbot. I'll show you some of the helpful features I can offer your business — from answering customer questions to pulling data from your site and more. Feel free to explore!";
         messages.appendChild(botResponse);
+
+        // 🗣️ TTS call here
+        const plainText = botMessage.replace(/<[^>]*>/g, '');
+        speak(plainText);
         scrollToBottom();
         return;
 
 
-        case "The Shuck 🥔":
-            botMessage = "Established in <strong>2002</strong> on reclaimed farmland just outside downtown Boise, the stadium celebrates Idaho’s <strong>agricultural heritage</strong> with a perfect blend of rural charm and modern ballpark innovation 🥔";
+        case "📊 Services":
+            botMessage = "At <strong>Ridgeline Strategy Group</strong>, we offer higher education consulting, AI & automation strategies, custom web design, and digital media solutions. <br><br>Which service aligns with your needs?<br><br>Let me know!";
             break;        
-            case "🪑Seating Chart":
-                botMessage = `Here's the full layout of <strong><a href="seats.html" target="_blank" style="color: #D4A019; text-decoration: underline;">The Shuck</a></strong>! From the premium <strong>'Potato Box'</strong> seats to the rowdy <strong>'Fryer Fan Zone'</strong> in left field, there’s not a bad spud in the bunch! 🥔`;
+            case "🎓 Campus Insight":
+                botMessage = `<strong>Campus Insight</strong> provides institutions with guidance on enrollment, executive transition, and market strategies. <br><br>Can I provide you with more details or would you like to set up a consultation?`;
                 break;            
-        case "🎟️Buy Tickets":
-                botMessage = `You're just a few clicks away from catching all the action at <strong>The Shuck</strong>! Tap below to view <strong>ticket options</strong>, <strong>seating availability</strong>, and <strong>special promotions</strong> 🎫<br><br><a href="ticket.html" target="_blank" style="color: #D4A019; text-decoration: underline;"><strong>🎟️ View Ticket Options</strong></a>`;
+        case "🤖 Pennock Systems":
+                botMessage = `<strong>Pennock Systems</strong> improves automation processes, the user-experience, and integrates artificial intelligence so your business can optimize productivity. From custom chatbots to personalized web-design, we've got you covered. <br><br>What further information can I provide for you?`;
                 break;                                             
-        case "🚗 Parking/Entry":
-                botMessage = `General parking is <strong>free</strong> in Lot A. Gates open <strong>90 minutes before first pitch</strong>, and both mobile and printed tickets are accepted.<br>
-                <a href="parking.html" target="_blank" style="color: #D4A019; text-decoration: underline;"><strong>🅿️ View Full Parking Details</strong></a>`;
+        case "📷 5-Star Media":
+                botMessage = `<strong>5-Star Media</strong> enhances your brand's presence through creative digital strategies. From social media campaigns to personal brand display, we tailor solutions that will boost your online visibility. <br><br>Want to learn more? Let me know!`;
                 break;          
             case "🍻Bleacher Barn":
                 botMessage = `Located just <strong>beyond left field</strong>, the <a href="barn.html" target="_blank" style="color: #D4A019; text-decoration: underline;"><strong>Bleacher Barn</strong></a> is your go-to fan zone featuring an epic lineup of <strong>local breweries</strong> and unbeatable views of the game! 🍻<br><em>21+ to drink. Good times for all.</em>`;
@@ -90,40 +115,55 @@ switch (option) {
         botResponse.classList.add("message", "bot-message");
         botResponse.innerHTML = botMessage;
         messages.appendChild(botResponse);
+
+        // 🗣️ TTS call here
+        const plainText = botMessage.replace(/<[^>]*>/g, '');
+        speak(plainText);
         scrollToBottom();
 
-        if (option === "The Shuck 🥔") {
+        if (option === "📊 Services") {
             setTimeout(() => {
                 const buttonContainer = document.createElement("div");
                 buttonContainer.classList.add("button-container");
-                buttonContainer.appendChild(createButton("🪑Seating Chart"));
-                buttonContainer.appendChild(createButton("🎟️Buy Tickets"));
-                buttonContainer.appendChild(createButton("🚗 Parking/Entry"));
-                buttonContainer.appendChild(createButton("🍻Bleacher Barn"));
+                buttonContainer.appendChild(createButton("🎓 Campus Insight"));
+                buttonContainer.appendChild(createButton("🤖 Pennock Systems"));
+                buttonContainer.appendChild(createButton("📷 5-Star Media"));
+                buttonContainer.appendChild(createButton("OTHER GPT"));
                 messages.appendChild(buttonContainer);
                 scrollToBottom();
             }, 1000);
         }
 
-        if (option === "Team ⚾") {
+        if (option === "🎓 Campus Insight") {
             setTimeout(() => {
                 const buttonContainer = document.createElement("div");
                 buttonContainer.classList.add("button-container");
-                buttonContainer.appendChild(createButton("📋 Roster"));
-                buttonContainer.appendChild(createButton("📅 Schedule"));
-                buttonContainer.appendChild(createButton("🧢 Coaches"));
-                buttonContainer.appendChild(createButton("🥔 Meet Tater"));
+                buttonContainer.appendChild(createButton("Learn More"));
+                buttonContainer.appendChild(createButton("Consultation Form"));
                 messages.appendChild(buttonContainer);
                 scrollToBottom();
             }, 1000);
         }
 
-        if (option === "💬24/7 Support") {
+        if (option === "🤖 Pennock Systems") {
             setTimeout(() => {
                 const buttonContainer = document.createElement("div");
                 buttonContainer.classList.add("button-container");
-                buttonContainer.appendChild(createButton("👋 Instant Support"));
-                buttonContainer.appendChild(createButton("👤 Workload"));
+                buttonContainer.appendChild(createButton("Learn More"));
+                buttonContainer.appendChild(createButton("Chatbots"));
+                buttonContainer.appendChild(createButton("Web-Design"));
+                buttonContainer.appendChild(createButton("Consultation Form"));
+                messages.appendChild(buttonContainer);
+                scrollToBottom();
+            }, 1000);
+        }
+
+                if (option === "📷 5-Star Media") {
+            setTimeout(() => {
+                const buttonContainer = document.createElement("div");
+                buttonContainer.classList.add("button-container");
+                buttonContainer.appendChild(createButton("Learn More"));
+                buttonContainer.appendChild(createButton("Consultation Form"));
                 messages.appendChild(buttonContainer);
                 scrollToBottom();
             }, 1000);
@@ -151,31 +191,38 @@ function createButton(label, url = null) {
 }
 
 function greetUser() {
-    const messages = document.getElementById("chatbot-messages");
+  const messages = document.getElementById("chatbot-messages");
 
-// First greeting message
-const greetingMessage1 = document.createElement("div");
-greetingMessage1.classList.add("message", "bot-message");
-greetingMessage1.innerHTML = "Hello! My name is <strong>Stratus</strong>🤖<br>I'll be your <strong>virtual assistant</strong> during your visit today!";
-messages.appendChild(greetingMessage1);
+  const greetingMessage1 = document.createElement("div");
+  greetingMessage1.classList.add("message", "bot-message");
+  greetingMessage1.innerHTML = "Hello! My name is <strong>Stratus</strong>🤖<br>I'll be your <strong>virtual assistant</strong> during your visit today!";
+  messages.appendChild(greetingMessage1);
 
+  speak("Hello! My name is Stratus. I'll be your virtual assistant during your visit today!");
 
-// Optional delay for realism (500ms)
-setTimeout(() => {
-    // Second follow-up message
+  setTimeout(() => {
     const greetingMessage2 = document.createElement("div");
     greetingMessage2.classList.add("message", "bot-message");
-    greetingMessage2.innerHTML = "How can I assist you?";
+    greetingMessage2.innerHTML = "How can I assist you today?";
     messages.appendChild(greetingMessage2);
+
+    speak("How can I assist you today?");
     scrollToBottom();
-}, 500); // Adjust delay as needed
+  }, 500);
 
-scrollToBottom();
-
+  scrollToBottom();
 }
 
 
-window.onload = greetUser;
+
+window.onload = () => {
+  const btn = document.getElementById("tts-toggle");
+  btn.textContent = "🔇";  // show muted icon initially
+  btn.addEventListener("click", toggleTTS);
+
+  greetUser(); // if you want to start with greeting
+};
+
 
 function scrollToBottom() {
     const chatBody = document.querySelector(".chat-body");
