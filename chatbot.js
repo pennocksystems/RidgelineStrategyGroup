@@ -165,7 +165,7 @@ setTimeout(() => {
     // Second follow-up message
     const greetingMessage2 = document.createElement("div");
     greetingMessage2.classList.add("message", "bot-message");
-    greetingMessage2.innerHTML = "How can I assist you today?";
+    greetingMessage2.innerHTML = "How can I assist you?";
     messages.appendChild(greetingMessage2);
     scrollToBottom();
 }, 500); // Adjust delay as needed
