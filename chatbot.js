@@ -1,4 +1,4 @@
-const elevenLabsApiKey = "sk_3bf4c58f7f6a8c01d937f2610cbb6ec0b968b9ca07ff5581";
+const elevenLabsApiKey = "";
 const elevenLabsVoiceId = "IKne3meq5aSn9XLyUdCD"; 
 
 let ttsMuted = true;  // Start muted
@@ -47,7 +47,7 @@ async function speak(text) {
 }
 
 async function getOpenAIResponse(userMessage) {
-  const apiKey = "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"; // 🔐 Replace with your real key
+  const apiKey = ""; // 🔐 Replace with your real key
   const endpoint = "https://api.openai.com/v1/chat/completions";
 
   const systemPrompt = `
