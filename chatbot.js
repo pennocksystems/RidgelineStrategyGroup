@@ -1,3 +1,6 @@
+const elevenLabsApiKey = "sk_3bf4c58f7f6a8c01d937f2610cbb6ec0b968b9ca07ff5581";
+const elevenLabsVoiceId = "IKne3meq5aSn9XLyUdCD"; 
+
 let ttsMuted = true;  // Start muted
 
 function toggleTTS() {
@@ -10,13 +13,82 @@ function toggleTTS() {
   }
 }
 
-function speak(text) {
-  if (ttsMuted) return; // Don't speak if muted
+async function speak(text) {
+  if (ttsMuted) return;
 
-  if (!window.speechSynthesis) return;
+  const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${elevenLabsVoiceId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "xi-api-key": elevenLabsApiKey
+    },
+    body: JSON.stringify({
+      text: text,
+      model_id: "eleven_monolingual_v1", // or eleven_multilingual_v2
+      voice_settings: {
+        stability: 0.4,
+        similarity_boost: 0.8
+      }
+    })
+  });
 
-  const utterance = new SpeechSynthesisUtterance(text);
-  window.speechSynthesis.speak(utterance);
+  if (!response.ok) {
+    console.error("TTS request failed.");
+    return;
+  }
+
+  const arrayBuffer = await response.arrayBuffer();
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+  const source = audioContext.createBufferSource();
+  source.buffer = audioBuffer;
+  source.connect(audioContext.destination);
+  source.start(0);
+}
+
+async function getOpenAIResponse(userMessage) {
+  const apiKey = "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"; // 🔐 Replace with your real key
+  const endpoint = "https://api.openai.com/v1/chat/completions";
+
+  const systemPrompt = `
+You are a helpful AI assistant for Ridgeline Strategy Group.
+
+Ridgeline Strategy Group includes three specialized branches:
+- Campus Insight: focused on Higher Education Consulting.
+- Pennock Systems: focused on AI integration and Web Design.
+- 5-Star Media: focused on custom Digital Media Solutions.
+
+Your role is to guide users through these services. In every message, subtly emphasize Ridgeline Strategy Group's value and innovation. Maintain a friendly, informative, and professional tone. Never break character.
+
+Keep your responses under 80 words.
+`;  
+
+  const payload = {
+    model: "gpt-4", // or "gpt-3.5-turbo"
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: userMessage }
+    ],
+    temperature: 0.7,
+    max_tokens: 120  // 👈 Hard limit on token count (approx. 80–90 words)
+  };
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+    return data.choices?.[0]?.message?.content || "Sorry, I couldn’t process that right now.";
+  } catch (error) {
+    console.error("OpenAI API error:", error);
+    return "Oops! Something went wrong while reaching Ridgeline's AI assistant.";
+  }
 }
 
 
@@ -65,6 +137,74 @@ switch (option) {
         scrollToBottom();
         return;
 
+        case "💬 Chat":
+    botMessage = "What else can I help you with today?";
+
+    const botPromptChat = document.createElement("div");
+    botPromptChat.classList.add("message", "bot-message");
+    botPromptChat.innerHTML = botMessage;
+    messages.appendChild(botPromptChat);
+    scrollToBottom();
+
+    setTimeout(() => {
+      const inputContainer = document.createElement("div");
+      inputContainer.classList.add("custom-input-container");
+
+      const input = document.createElement("input");
+      input.type = "text";
+      input.placeholder = "Type your question here...";
+      input.classList.add("custom-input");
+
+      const submitBtn = document.createElement("button");
+      submitBtn.textContent = "Send";
+      submitBtn.classList.add("chatbot-btn");
+      submitBtn.onclick = async () => {
+        const userInput = input.value.trim();
+        if (!userInput) return;
+
+        const userMsg = document.createElement("div");
+        userMsg.classList.add("message", "user-message");
+        userMsg.textContent = userInput;
+        messages.appendChild(userMsg);
+        scrollToBottom();
+
+        inputContainer.remove(); // Remove input after submit
+
+        const typingBubble = document.createElement("div");
+        typingBubble.classList.add("message", "bot-message", "typing");
+
+        const dotsContainer = document.createElement("div");
+        dotsContainer.classList.add("typing-dots");
+
+        for (let i = 0; i < 3; i++) {
+            const dot = document.createElement("div");
+            dot.classList.add("typing-dot");
+            dotsContainer.appendChild(dot);
+        }
+
+        typingBubble.appendChild(dotsContainer);
+        messages.appendChild(typingBubble);
+        scrollToBottom();
+
+        const response = await getOpenAIResponse(userInput);
+        messages.removeChild(typingBubble);
+
+        const responseMsg = document.createElement("div");
+        responseMsg.classList.add("message", "bot-message");
+        responseMsg.innerHTML = response;
+        messages.appendChild(responseMsg);
+
+        speak(response.replace(/<[^>]*>/g, ''));
+        scrollToBottom();
+      };
+
+      inputContainer.appendChild(input);
+      inputContainer.appendChild(submitBtn);
+      messages.appendChild(inputContainer);
+      input.focus();
+      scrollToBottom();
+    }, 500);
+    return;
 
         case "📊 Services":
             botMessage = "At <strong>Ridgeline Strategy Group</strong>, we offer higher education consulting, AI & automation strategies, custom web design, and digital media solutions. <br><br>Which service aligns with your needs?<br><br>Let me know!";
@@ -128,7 +268,7 @@ switch (option) {
                 buttonContainer.appendChild(createButton("🎓 Campus Insight"));
                 buttonContainer.appendChild(createButton("🤖 Pennock Systems"));
                 buttonContainer.appendChild(createButton("📷 5-Star Media"));
-                buttonContainer.appendChild(createButton("OTHER GPT"));
+                buttonContainer.appendChild(createButton("RSG MAP"));
                 messages.appendChild(buttonContainer);
                 scrollToBottom();
             }, 1000);
