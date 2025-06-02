@@ -84,7 +84,7 @@ Keep your responses under 80 words.
     });
 
     const data = await response.json();
-    return data.choices?.[0]?.message?.content || "Sorry, I couldn’t process that right now.";
+    return data.choices?.[0]?.message?.content || "Lots of people are trying to access the chat right now. Hang tight or try again later. For urgent matters, head to our contact form!";
   } catch (error) {
     console.error("OpenAI API error:", error);
     return "Oops! Something went wrong while reaching Ridgeline's AI assistant.";
