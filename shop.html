@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Shopping Cart</title>
+  <link rel="stylesheet" href="shop.css" />
+  <script>
+    function loadCart() {
+      const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartContainer = document.getElementById('cart-items');
+      const totalPriceEl = document.getElementById('total-price');
+      
+      cartContainer.innerHTML = '';
+      let total = 0;
+
+      if (cartItems.length === 0) {
+        cartContainer.innerHTML = '<p class="empty-cart">Your cart is empty.</p>';
+        totalPriceEl.textContent = '$0.00';
+        return;
+      }
+
+      cartItems.forEach(({ name, price, quantity }, index) => {
+        total += price * quantity;
+        cartContainer.innerHTML += `
+          <div class="cart-item">
+            <div class="item-info">
+              <img src="images/5starlogo.png" alt="${name}" class="item-image" />
+              <div class="item-details">
+                <h4 class="item-name">${name}</h4>
+                <p class="item-price">$${price.toFixed(2)}</p>
+<div class="quantity-control">
+  <button onclick="changeQuantity(${index}, -1)" aria-label="Decrease quantity">-</button>
+  <span class="quantity-display">${quantity}</span>
+  <button onclick="changeQuantity(${index}, 1)" aria-label="Increase quantity">+</button>
+</div>
+              </div>
+            </div>
+            <button onclick="removeItem(${index})" class="remove-btn" aria-label="Remove ${name}">Remove</button>
+          </div>
+        `;
+      });
+
+      totalPriceEl.textContent = `$${total.toFixed(2)}`;
+    }
+
+    function removeItem(index) {
+      let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      cartItems.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+      loadCart();
+      updateCartCount();
+    }
+
+    function changeQuantity(index, delta) {
+  let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  if (!cartItems[index]) return;
+
+  cartItems[index].quantity += delta;
+  if (cartItems[index].quantity < 1) {
+    // Optionally, remove item if quantity goes below 1
+    cartItems.splice(index, 1);
+  }
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+  loadCart();
+  updateCartCount();
+}
+
+    function updateCartCount() {
+      const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+      const count = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+      const cartCountEl = document.getElementById('cart-count');
+      if (cartCountEl) cartCountEl.textContent = count;
+    }
+
+    window.onload = () => {
+      loadCart();
+      updateCartCount();
+    };
+  </script>
+</head>
+<body>
+  <header class="header-bar">
+    <h1>Your Shopping Cart</h1>
+    <a href="5star.html" class="back-link">&larr; Back to Shop</a>
+  </header>
+
+  <main class="main-content">
+    <div id="cart-items"></div>
+
+    <div class="cart-summary">
+      <h3>Total: <span id="total-price">$0.00</span></h3>
+<button onclick="window.location.href='checkout.html'" class="checkout-btn">Proceed to Checkout</button>
+  </main>
+</body>
+</html>

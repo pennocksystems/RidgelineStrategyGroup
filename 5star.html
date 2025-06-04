@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5-Star Media | Elite Sports Graphics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white font-sans">
+
+  <!-- Navbar -->
+  <header class="fixed w-full bg-black z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+      <h1 class="text-2xl font-bold text-yellow-400">5-Star Media</h1>
+      <nav class="space-x-6 text-sm">
+        <a href="#about" class="hover:text-yellow-400">About</a>
+        <a href="#services" class="hover:text-yellow-400">Services</a>
+        <a href="#portfolio" class="hover:text-yellow-400">Portfolio</a>
+        <a href="#contact" class="hover:text-yellow-400">Contact</a>
+        <a href="shop.html" class="relative hover:text-yellow-400 ml-4"> 
+          <!-- Shopping Cart Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007 17h10a1 1 0 00.9-.55L21 13M7 13H5.4M16 21a1 1 0 100-2 1 1 0 000 2zm-8 0a1 1 0 100-2 1 1 0 000 2z" />
+          </svg>
+          <!-- Optional: Cart item count -->
+          <span id="cart-count" class="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs w-5 h-5 flex items-center justify-center rounded-full font-bold">0</span>
+        </a>
+    </div>
+  </header>
+
+<!-- Hero Section with Alternating Collage Background + Shuffle -->
+<section class="relative h-screen w-full overflow-hidden">
+
+  <!-- Collage Background (Shuffling Every 7s) -->
+  <div id="collage" class="absolute inset-0 z-0 grid grid-cols-5 grid-rows-4 gap-1 opacity-50 transition-opacity duration-700">
+    <!-- Alternating Image / Video Pattern -->
+    <div class="collage-item"><img src="images/ChatGPT Image May 9, 2025, 03_59_55 PM.png" class="object-cover w-full h-full" /></div>
+    <div class="collage-item"><video autoplay muted loop class="object-cover w-full h-full"><source src="videos/857195-hd_1280_720_25fps.mp4" type="video/mp4" /></video></div>
+    <div class="collage-item"><img src="images/ChatGPT Image May 2, 2025, 07_48_05 PM.png" class="object-cover w-full h-full" /></div>
+    <div class="collage-item"><video autoplay muted loop class="object-cover w-full h-full"><source src="videos/857195-hd_1280_720_25fps.mp4" type="video/mp4" /></video></div>
+    <div class="collage-item"><img src="images/ChatGPT Image May 9, 2025, 03_59_55 PM.png" class="object-cover w-full h-full" /></div>
+    <div class="collage-item"><video autoplay muted loop class="object-cover w-full h-full"><source src="videos/857195-hd_1280_720_25fps.mp4" type="video/mp4" /></video></div>
+    <div class="collage-item"><img src="images/ChatGPT Image May 2, 2025, 07_48_05 PM.png" class="object-cover w-full h-full" /></div>
+    <div class="collage-item"><video autoplay muted loop class="object-cover w-full h-full"><source src="videos/857195-hd_1280_720_25fps.mp4" type="video/mp4" /></video></div>
+    <div class="collage-item"><img src="images/ChatGPT Image May 9, 2025, 03_59_55 PM.png" class="object-cover w-full h-full" /></div>
+    <div class="collage-item"><video autoplay muted loop class="object-cover w-full h-full"><source src="videos/857195-hd_1280_720_25fps.mp4" type="video/mp4" /></video></div>
+    <div class="collage-item"><img src="images/ChatGPT Image May 2, 2025, 07_48_05 PM.png" class="object-cover w-full h-full" /></div>
+    <div class="collage-item"><video autoplay muted loop class="object-cover w-full h-full"><source src="videos/857195-hd_1280_720_25fps.mp4" type="video/mp4" /></video></div>
+    <div class="collage-item"><img src="images/ChatGPT Image May 9, 2025, 03_59_55 PM.png" class="object-cover w-full h-full" /></div>
+    <div class="collage-item"><video autoplay muted loop class="object-cover w-full h-full"><source src="videos/857195-hd_1280_720_25fps.mp4" type="video/mp4" /></video></div>
+    <div class="collage-item"><img src="images/ChatGPT Image May 2, 2025, 07_48_05 PM.png" class="object-cover w-full h-full" /></div>
+    <div class="collage-item"><video autoplay muted loop class="object-cover w-full h-full"><source src="videos/857195-hd_1280_720_25fps.mp4" type="video/mp4" /></video></div>
+    <div class="collage-item"><img src="images/ChatGPT Image May 9, 2025, 03_59_55 PM.png" class="object-cover w-full h-full" /></div>
+    <div class="collage-item"><video autoplay muted loop class="object-cover w-full h-full"><source src="videos/857195-hd_1280_720_25fps.mp4" type="video/mp4" /></video></div>
+    <div class="collage-item"><img src="images/ChatGPT Image May 2, 2025, 07_48_05 PM.png" class="object-cover w-full h-full" /></div>
+    <div class="collage-item"><video autoplay muted loop class="object-cover w-full h-full"><source src="videos/857195-hd_1280_720_25fps.mp4" type="video/mp4" /></video></div>
+  </div>
+
+  <!-- Dark Overlay for Readability -->
+  <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+
+  <!-- Foreground Hero Content -->
+  <div class="relative z-20 flex flex-col items-center justify-center h-full text-center px-4">
+    <h2 class="text-4xl md:text-5xl font-extrabold text-yellow-400">Elite Visuals. Iconic Brands.</h2>
+    <p class="mt-4 text-lg text-white max-w-xl">Custom sports graphics for the stars of tomorrow — and today.</p>
+    <a href="#contact" class="mt-6 inline-block bg-yellow-400 text-black font-bold px-6 py-3 rounded hover:bg-yellow-300 transition">
+      Explore
+    </a>
+  </div>
+</section>
+
+  <!-- Services -->
+  <section id="services" class="py-20 px-4 bg-black">
+    <h3 class="text-3xl font-bold text-center mb-12 text-yellow-400">What We Do</h3>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+        <h4 class="text-xl font-bold mb-2 text-white">Jersey Swaps</h4>
+        <p class="text-gray-400">Elite-level edits for college commitments and player announcements.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+        <h4 class="text-xl font-bold mb-2 text-white">Gameday Graphics</h4>
+        <p class="text-gray-400">Dynamic visuals to hype up the action and highlight key matchups.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+        <h4 class="text-xl font-bold mb-2 text-white">Custom Visuals</h4>
+        <p class="text-gray-400">Tailored branding graphics that reflect your unique identity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="py-20 bg-gray-900 text-center px-4">
+    <h3 class="text-3xl font-bold mb-12 text-yellow-400">Featured Work</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <!-- Replace these with real images -->
+      <img src="images/5starlogo.png" class="rounded-lg shadow-md" alt="Graphic 1" />
+      <img src="images/5starlogo.png" class="rounded-lg shadow-md" alt="Graphic 2" />
+      <img src="images/5starlogo.png" class="rounded-lg shadow-md" alt="Graphic 3" />
+    </div>
+  </section>
+
+  <!-- Shop Section -->
+<section id="shop" class="py-20 px-4 bg-gray-900 text-center">
+  <h3 class="text-3xl font-bold mb-12 text-yellow-400">Shop Our Designs</h3>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <!-- Sample Product -->
+    <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+      <img src="images/5starlogo.png" alt="Product" class="rounded mb-4">
+      <h4 class="text-white font-bold mb-2">Style One Graphic</h4>
+      <p class="text-gray-400 mb-2">$50.00</p>
+      <button onclick="addToCart('Style One Graphic', 25)" class="bg-yellow-400 text-black font-bold px-4 py-2 rounded hover:bg-yellow-300 transition">Add to Cart</button>
+    </div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+      <img src="images/5starlogo.png" alt="Product" class="rounded mb-4">
+      <h4 class="text-white font-bold mb-2">Style Two Graphic</h4>
+      <p class="text-gray-400 mb-2">$50.00</p>
+      <button onclick="addToCart('Style Two Graphic', 25)" class="bg-yellow-400 text-black font-bold px-4 py-2 rounded hover:bg-yellow-300 transition">Add to Cart</button>
+    </div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+      <img src="images/5starlogo.png" alt="Product" class="rounded mb-4">
+      <h4 class="text-white font-bold mb-2">Style Three Graphic</h4>
+      <p class="text-gray-400 mb-2">$50.00</p>
+      <button onclick="addToCart('Style Three Graphic', 25)" class="bg-yellow-400 text-black font-bold px-4 py-2 rounded hover:bg-yellow-300 transition">Add to Cart</button>
+    </div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+      <img src="images/5starlogo.png" alt="Product" class="rounded mb-4">
+      <h4 class="text-white font-bold mb-2">Style One Video</h4>
+      <p class="text-gray-400 mb-2">$100.00</p>
+      <button onclick="addToCart('Style One Video', 100)" class="bg-yellow-400 text-black font-bold px-4 py-2 rounded hover:bg-yellow-300 transition">Add to Cart</button>
+    </div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+      <img src="images/5starlogo.png" alt="Product" class="rounded mb-4">
+      <h4 class="text-white font-bold mb-2">Style Two Video</h4>
+      <p class="text-gray-400 mb-2">$100.00</p>
+      <button onclick="addToCart('Style Two Video', 100)" class="bg-yellow-400 text-black font-bold px-4 py-2 rounded hover:bg-yellow-300 transition">Add to Cart</button>
+    </div>
+        <div class="bg-gray-800 p-4 rounded-lg shadow-md">
+      <img src="images/5starlogo.png" alt="Product" class="rounded mb-4">
+      <h4 class="text-white font-bold mb-2">Style Three Video</h4>
+      <p class="text-gray-400 mb-2">$100.00</p>
+      <button onclick="addToCart('Style Three Video', 100)" class="bg-yellow-400 text-black font-bold px-4 py-2 rounded hover:bg-yellow-300 transition">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 bg-black text-center px-4">
+    <h3 class="text-3xl font-bold text-yellow-400 mb-6">Let’s Create Something Legendary</h3>
+    <p class="text-gray-300 mb-6">Ready to elevate your brand? Reach out via email or socials below.</p>
+    <div class="flex justify-center gap-6">
+      <a href="mailto:your@email.com" class="text-yellow-400 hover:underline">Email Us</a>
+      <a href="https://instagram.com/yourhandle" target="_blank" class="text-yellow-400 hover:underline">Instagram</a>
+      <a href="https://twitter.com/yourhandle" target="_blank" class="text-yellow-400 hover:underline">Twitter</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 py-6 text-center text-sm text-gray-500">
+    © 2025 5-Star Media. All rights reserved.
+  </footer>
+<script>
+  const collage = document.getElementById("collage");
+
+  function shuffleCollage() {
+    const items = Array.from(collage.children);
+
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+
+    collage.classList.add("opacity-0");
+
+    setTimeout(() => {
+      collage.innerHTML = "";
+      items.forEach(item => collage.appendChild(item));
+      collage.classList.remove("opacity-0");
+    }, 300);
+  }
+
+  setInterval(shuffleCollage, 7000);
+</script>
+<script>
+  let cartCount = 0;
+  const cartCounter = document.getElementById("cart-count");
+
+  function addToCart(productName, price) {
+    cartCount++;
+    cartCounter.textContent = cartCount;
+    alert(`${productName} added to cart for $${price}`);
+    // In the future, store to localStorage or send to a backend
+  }
+
+  function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const existingIndex = cart.findIndex(item => item.name === name);
+  if (existingIndex > -1) {
+    cart[existingIndex].quantity += 1;
+  } else {
+    cart.push({ name, price, quantity: 1 });
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
+  
+  // Update cart count badge
+  const cartCountEl = document.getElementById('cart-count');
+  if (cartCountEl) {
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCountEl.textContent = count;
+  }
+  alert(`${name} added to cart!`);
+}
+
+</script>
+</body>
+</html>
