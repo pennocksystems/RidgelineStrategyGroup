@@ -1,5 +1,5 @@
 const elevenLabsApiKey = "";
-const elevenLabsVoiceId = "IKne3meq5aSn9XLyUdCD"; 
+const elevenLabsVoiceId = ""; 
 
 let ttsMuted = true;  // Start muted
 
