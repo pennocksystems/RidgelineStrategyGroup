@@ -399,3 +399,17 @@ footer {
     font-size: 1rem;
     color: #4E6271;
 }
+
+/* BLOG PAGE SPECIFIC */
+.blog-thumb {
+    width: 100%;
+    height: 280px; /* Increased from 180px to show more of the image */
+    object-fit: cover;
+    object-position: center 20%; /* shift crop down by focusing lower */
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.our-story-box p:last-of-type {
+    margin-bottom: 15px;
+}
