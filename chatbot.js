@@ -274,16 +274,29 @@ switch (option) {
             }, 1000);
         }
 
-        if (option === "🎓 Campus Insight") {
-            setTimeout(() => {
-                const buttonContainer = document.createElement("div");
-                buttonContainer.classList.add("button-container");
-                buttonContainer.appendChild(createButton("Learn More"));
-                buttonContainer.appendChild(createButton("Consultation Form"));
-                messages.appendChild(buttonContainer);
-                scrollToBottom();
-            }, 1000);
-        }
+if (option === "🎓 Campus Insight") {
+    setTimeout(() => {
+        const buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("button-container");
+
+        // "Learn More" button behavior
+        const learnMoreButton = createButton("Learn More");
+        learnMoreButton.addEventListener("click", () => {
+            window.open("insight.html", "_blank");
+        });
+
+        // "Consultation Form" button behavior
+        const consultationButton = createButton("Consultation Form");
+        consultationButton.addEventListener("click", () => {
+            window.open("contact.html", "_blank");
+        });
+
+        buttonContainer.appendChild(learnMoreButton);
+        buttonContainer.appendChild(consultationButton);
+        messages.appendChild(buttonContainer);
+        scrollToBottom();
+    }, 1000);
+}
 
         if (option === "🤖 Pennock Systems") {
             setTimeout(() => {
