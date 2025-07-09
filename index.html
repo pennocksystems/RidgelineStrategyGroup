@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ridgeline Strategy Group LLC</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Farro:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Farro:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="images/R logo 2.png" type="image/png" />
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <a href="index.html" class="navbar-logo">
+        <img src="images/R logo 2.png" alt="RSG Logo">
+    </a>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+            <a href="services.html" class="dropbtn">Services</a>
+            <div class="dropdown-content">
+                <a href="insight.html">Campus Insight</a>
+                <a href="pennocksystems.html">Pennock Systems</a>
+                <a href="5star.html">5-Star Media</a>
+            </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+
+<!-- Hero Section with Background Video -->
+<header class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="videos/2063228-uhd_3840_2160_24fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+<div class="hero-content">
+  <h1 class="hero-title">
+    <span class="logo-letter">
+      <img src="images/White Ridgline Logo.png" alt="R Logo" class="logo-in-title" />
+    </span>idgeline Strategy Group
+  </h1>
+  <p>Client Analysis, AI Integrations, Market & Revenue Growth</p>
+  <a href="services.html" class="btn">Explore Our Services</a>
+</div>
+</header>
+
+<!-- Overview Section -->
+<section class="overview">
+    <h2>Who We Are</h2>
+    <p>Ridgeline Strategy Group, LLC is a premier, global consulting firm specializing in Education, Technology, and Digital Media Analysis & Solutions. 
+       We empower institutions and businesses by providing strategic guidance, AI-driven innovations, and expert consulting services to drive revenue and customer satisfaction.</p>
+    <div class="overview-container">
+
+        <a href="insight-solutions.html" class="overview-link">
+            <div class="overview-box">
+                <img src="images/R logo 2.png" alt="Campus Insight Logo" class="overview-logo" />
+                <h3>Campus Insight</h3>
+                <p>We specialize in assisting college and university leadership in assessing and solving critical problems related to marketing, budget & finance, recruitment & retention, campus training, and strategic planning.</p>
+            </div>
+        </a>
+
+        <a href="pennocksystems.html" class="overview-link">
+        <div class="overview-box">
+            <img src="images/ChatGPT Image May 2, 2025, 07_48_05 PM.png" alt="Pennock Systems Logo" class="overview-logo" />
+            <h3>Pennock Systems</h3>
+            <p>We develop custom AI integrations and automation solutions to improve customer engagement, enhance operational productivity, and drive sales for small businesses.</p>
+        </div>
+        </a>
+
+
+        <a href="5-star-media.html" class="overview-link">
+            <div class="overview-box">
+                <img src="images/5starlogo.png" alt="5-Star Logo" class="overview-logo" />
+                <h3>5-Star Media</h3>
+                <p>We create tailored media solutions for individuals, as well as small and mid-sized businesses build brand awareness and affinity.</p>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+
+<!-- Value Proposition Section -->
+<section class="value-proposition">
+    <h2>Why Choose Ridgeline Strategy Group?</h2>
+    <p>At RSG, we don’t just offer solutions—<strong>we guide you along the Ridgeline</strong>. While others stay grounded in conventional thinking, we elevate your perspective to help you see beyond immediate challenges and into lasting opportunities. Our cross-generational team blends seasoned leadership experience with cutting-edge technology expertise to deliver strategies that are as innovative as they are practical. Whether navigating business transformation, optimizing operations, or leveraging AI, we help you reach the Ridgeline of sustainable growth and competitive advantage.</p>
+    </div>
+</section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <h2>Ready to Elevate Your Business?</h2>
+        <p>Contact us today to discuss how we can help you grow.</p>
+        <a href="contact.html" class="btn">Get in Touch</a>
+    </section>
+
+  <!-- Chatbot Embed -->
+  <div id="chatbot-frame" style="display: none;">
+    <div class="chat-header">
+      <strong>Ridgeline Strategy Group</strong>
+      <button id="reset-chat" onclick="resetChat()" class="reset-btn">↻</button>
+      <button id="tts-toggle" aria-label="Toggle speech" title="Mute/Unmute TTS" style="font-size: 16px; cursor: pointer;">🔊</button>
+    </div>
+    <div class="chat-body" id="chat-body">
+      <div id="chatbot-messages">
+      </div>
+    </div>
+    <div id="chatbot-buttons-container">
+      <div id="chatbot-buttons">
+        <button class="chatbot-btn" onclick="handleButtonClick('📊 Services')">📊 Services</button>
+        <button class="chatbot-btn" onclick="handleButtonClick('💬 Chat')">💬 Chat</button>
+        <button class="chatbot-btn" onclick="handleButtonClick('💡 Resources')">💡 Resources</button>
+        <button class="chatbot-btn" onclick="handleButtonClick('📱 Contact')">📱 Contact</button>
+      </div>
+    </div>
+
+<div class="chatbot-footer">
+  Powered by <span class="footer-brand">Pennock Systems</span>
+</div>
+
+  </div>
+
+  <!-- Floating Toggle Button -->
+  <div id="chatbot-toggle" onclick="toggleChatbot()">
+    <img src="images/R logo 2.png" alt="Chatbot Logo" class="chatbot-logo" />
+  </div>
+  <script src="chatbot.js"></script>
+  <script>
+    function toggleChatbot() {
+      var frame = document.getElementById('chatbot-frame');
+      if (frame.classList.contains('show')) {
+        frame.classList.remove('show');
+        setTimeout(() => { frame.style.display = "none"; }, 500);
+      } else {
+        frame.style.display = "flex";
+        setTimeout(() => { frame.classList.add('show'); }, 10);
+      }
+    }
+
+    function resetChat() {
+      const chatMessages = document.getElementById('chatbot-messages');
+      chatMessages.innerHTML = '';
+      const greetingMessage = document.createElement('div');
+      greetingMessage.classList.add('bot-message');
+      greetingMessage.innerHTML = '<strong>You reset the chat!🔄</strong> How can I assist you?';
+      chatMessages.appendChild(greetingMessage);
+    }
+    </script>
+</body>
+    <!-- Footer --> 
+    <footer>
+        <p>&copy; 2025 Ridgeline Strategy Group, LLC. All Rights Reserved.</p>
+    </footer>
+</html>
